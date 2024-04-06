@@ -8,9 +8,11 @@
 <body>
     <script>
     
-    const playerSelection = "rock";
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    
+    let result = "";
+    let playerScore = 0;
+    let computerScore = 0;
+
 
         function getComputerChoice() {
             getNumber = Math.random();
@@ -32,35 +34,54 @@
 
             if (playerSelection === "rock") {
                 if (computerSelection === "rock") {
-                    alert("It's a tie");
+                    return result = "It's a tie";
                 } else if (computerSelection === "paper") {
-                    alert("You lose! Paper beats Rock");
+                    return  result = "You lose! Paper beats Rock";
                 } else if (computerSelection === "scissors") {
-                    alert("You win! Rock beats Scissors");
+                    return  result = "You win! Rock beats Scissors";
                 }
             }
 
             if (playerSelection === "paper") {
                 if (computerSelection === "paper") {
-                    alert("It's a tie");
+                    return  result = "It's a tie";
                 } else if (computerSelection === "scissors") {
-                    alert("You lose! Scissors beats Paper");
+                    return  result = "You lose! Scissors beats Paper";
                 } else if (computerSelection === "rock") {
-                    alert("You win! Paper beats Rock");
+                    return  result ="You win! Paper beats Rock";
                 }
             }
 
             if (playerSelection === "scissors") {
                 if (computerSelection === "scissors") {
-                    alert("It's a tie");
+                    return  result = "It's a tie";
                 } else if (computerSelection === "rock") {
-                    alert("You lose! Rock beats Scissors");
+                    return  result = "You lose! Rock beats Scissors";
                 } else if (computerSelection === "paper") {
-                    alert("You win! Scissors beats Paper");
+                    return  result = "You win! Scissors beats Paper";
                 }
             }
         }
+        
 
+    function playGame(){
+        playerSelection = prompt("Your choice ?");
+        const computerSelection = getComputerChoice();
+
+        playRound(playerSelection,computerSelection);
+        if (result === "It's a tie") {
+            playerScore += 0;
+            computerScore += 0;
+        } else if (result.substr(0,7) === "You win") {
+            playerScore += 1;
+            computerScore += 0;
+        } else if (result.substr(0,8) === "You lose") {
+            playerScore += 0;
+            computerScore += 1;
+        }
+        
+        console.log("Player : " + playerScore + " " + "Computer : " + computerScore);
+    }    
 
     
     </script>
