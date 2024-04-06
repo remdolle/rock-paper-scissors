@@ -70,12 +70,15 @@
 
         playRound(playerSelection,computerSelection);
         if (result === "It's a tie") {
+            console.log(result);
             playerScore += 0;
             computerScore += 0;
         } else if (result.substr(0,7) === "You win") {
+            console.log(result);
             playerScore += 1;
             computerScore += 0;
         } else if (result.substr(0,8) === "You lose") {
+            console.log(result);
             playerScore += 0;
             computerScore += 1;
         }
