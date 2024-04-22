@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Score :</h1>
+    <div>Player score :</div>
+        <div id = "pScore">0</div>
+    <div>Computer score :</div>
+        <div id = "cScore">0</div>
+    <div id = "result"></div>
+    <h2>Press a button and make your choice :</h2>
+    <div id="boutons">
+        <button id="rock"> Rock</button>
+        <button id="paper"> Paper</button>
+        <button id="scissors"> Scissors</button>
+    </div>
+
     <script>
     
     
@@ -34,67 +47,95 @@
 
             if (playerSelection === "rock") {
                 if (computerSelection === "rock") {
-                    return result = "It's a tie";
+                     result = "It's a tie";
                 } else if (computerSelection === "paper") {
-                    return  result = "You lose! Paper beats Rock";
+                    computerScore += 1;
+                      result = "You lose! Paper beats Rock";
                 } else if (computerSelection === "scissors") {
-                    return  result = "You win! Rock beats Scissors";
+                    playerScore += 1;
+                      result = "You win! Rock beats Scissors";
                 }
             }
 
             if (playerSelection === "paper") {
                 if (computerSelection === "paper") {
-                    return  result = "It's a tie";
+                      result = "It's a tie";
                 } else if (computerSelection === "scissors") {
-                    return  result = "You lose! Scissors beats Paper";
+                    computerScore += 1;
+                      result = "You lose! Scissors beats Paper";
                 } else if (computerSelection === "rock") {
-                    return  result ="You win! Paper beats Rock";
+                    playerScore += 1;
+                      result ="You win! Paper beats Rock";
                 }
             }
 
             if (playerSelection === "scissors") {
                 if (computerSelection === "scissors") {
-                    return  result = "It's a tie";
+                      result = "It's a tie";
                 } else if (computerSelection === "rock") {
-                    return  result = "You lose! Rock beats Scissors";
+                    computerScore += 1;
+                      result = "You lose! Rock beats Scissors";
                 } else if (computerSelection === "paper") {
-                    return  result = "You win! Scissors beats Paper";
+                    playerScore += 1;
+                      result = "You win! Scissors beats Paper";                
                 }
             }
-        }
-        
+            
+            return result;
+        }  
 
-    function playGame(){
-        playerSelection = prompt("Your choice ?");
-        const computerSelection = getComputerChoice();
+    const rock = document.getElementById("rock");
+    const paper = document.getElementById("paper");
+    const scissors = document.getElementById("scissors");
+    const computerSelection = getComputerChoice();
+    const pScore = document.getElementById("pScore");
+    const cScore = document.getElementById("cScore");
+    const resultat = document.getElementById("result");
+    const lesBoutons = document.getElementById("boutons");
 
-        playRound(playerSelection,computerSelection);
-        if (result === "It's a tie") {
-            console.log(result);
-            playerScore += 0;
-            computerScore += 0;
-        } else if (result.substr(0,7) === "You win") {
-            console.log(result);
-            playerScore += 1;
-            computerScore += 0;
-        } else if (result.substr(0,8) === "You lose") {
-            console.log(result);
-            playerScore += 0;
-            computerScore += 1;
-        }
-        
-        if (playerScore + computerScore == 5) {
-            if (playerScore < computerScore) {
-                console.log ("Computer won, computer is lucker than you")
-            } else {
-                console.log ("You win ! You're lucker than computer")
-            }    
-        } else {
-            console.log("Player : " + playerScore + " " + "Computer : " + computerScore);
-        }         
-    }    
+    rock.addEventListener("click", () => {
+        playRound("rock", computerSelection);
+        pScore.textContent = playerScore;
+        cScore.textContent = computerScore;
 
-    
+        if (playerScore == 5 || computerScore == 5) {
+                if (playerScore < computerScore) {
+                    resultat.textContent = "Computer won, computer is lucker than you" ;
+                } else {
+                    resultat.textContent = "You win ! You're lucker than computer";
+                } 
+            }
+    })
+
+    paper.addEventListener("click", () => {
+        playRound("paper", computerSelection);
+        pScore.textContent = playerScore;
+        cScore.textContent = computerScore;
+
+        if (playerScore == 5 || computerScore == 5) {
+                if (playerScore < computerScore) {
+                    resultat.textContent = "Computer won, computer is lucker than you" ;
+                } else {
+                    resultat.textContent = "You win ! You're lucker than computer";
+                }    
+            }      
+    })
+
+    scissors.addEventListener("click", () => {
+        playRound("scissors", computerSelection);
+        pScore.textContent = playerScore;
+        cScore.textContent = computerScore;
+
+        if (playerScore == 5 || computerScore == 5) {
+                if (playerScore < computerScore) {
+                    resultat.textContent = "Computer won, computer is lucker than you" ;
+                } else {
+                    resultat.textContent = "You win ! You're lucker than computer";
+                }    
+            }      
+    })
+
+   
     </script>
     
 </body>
