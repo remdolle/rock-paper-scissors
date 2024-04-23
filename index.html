@@ -87,14 +87,13 @@
     const rock = document.getElementById("rock");
     const paper = document.getElementById("paper");
     const scissors = document.getElementById("scissors");
-    const computerSelection = getComputerChoice();
     const pScore = document.getElementById("pScore");
     const cScore = document.getElementById("cScore");
     const resultat = document.getElementById("result");
     const lesBoutons = document.getElementById("boutons");
 
     rock.addEventListener("click", () => {
-        playRound("rock", computerSelection);
+        playRound("rock", getComputerChoice());
         pScore.textContent = playerScore;
         cScore.textContent = computerScore;
 
@@ -108,7 +107,7 @@
     })
 
     paper.addEventListener("click", () => {
-        playRound("paper", computerSelection);
+        playRound("paper", getComputerChoice());
         pScore.textContent = playerScore;
         cScore.textContent = computerScore;
 
@@ -122,7 +121,7 @@
     })
 
     scissors.addEventListener("click", () => {
-        playRound("scissors", computerSelection);
+        playRound("scissors", getComputerChoice());
         pScore.textContent = playerScore;
         cScore.textContent = computerScore;
 
